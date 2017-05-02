@@ -1,11 +1,17 @@
 var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
+// var newSentence = [];
+
 $(function() {
-  $("form").submit(function(event) {debugger;
 
-    var sentence = $("#sentence").val();
+  var sentence = "";
+  var newSentence = "";
 
-    var newSentence = sentence;
+  $("form#one").submit(function(event) {
+
+    sentence = $("#sentence").val();
+
+    newSentence = sentence;
 
     for(var index = 0; index < vowels.length; index +=1) {
       newSentence = newSentence.split(vowels[index]).join("-");
@@ -17,7 +23,25 @@ $(function() {
 
     $("#output").text(newSentence);
 
+
     event.preventDefault();
+  });
+
+  $("form#two").submit(function(event) {
+    // var sentence2 = $("#sentence").val();
+    alert(newSentence);
+    alert(sentence);
+
+    var playerSentence = $("#guess").val();
+
+    if (playerSentence === sentence) {
+      alert("YOU WIN");
+    } else {
+      alert("WRONG, try again");
+    }
+
+    event.preventDefault();
+
   });
 
 });
